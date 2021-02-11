@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Visual sorting</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <header class="grid">
+      <div class="left">
+        <button id="generator" class="generator">Restart</button>
+      </div>
+      <div class="midle">
+        <div class="sliderContainer">
+          <input type="range" min="5" max="750" value="64" class="slider" id="arraySize" />
+          <div id="arraySizeText">Array size: 64</div>
+        </div>
+        <div class="sliderContainer">
+          <input type="range" min="0" max="25" step="0.25" value="10" class="slider" id="speed" />
+          <div id="speedText">Speed: 10</div>
+        </div>
+        <div id="sortMethods" class="custom-select">
+          <select>
+            <option value="0">Select sort:</option>
+            <option value="1">Tim Sort</option>
+            <option value="2">Insertion Sort</option>
+            <option value="3">Selection sort</option>
+            <option value="4">Quick Sort</option>
+            <option value="5">Merge Sort</option>
+            <option value="6">Bubble Sort</option>
+            <option value="7">Random sort</option>
+            <option value="8">Stalin Sort</option>
+          </select>
+        </div>
+      </div>
+      <div class="right">
+        <button id="startButton" class="startButton">Start sorting</button>
+      </div>
+    </header>
+    <canvas id="canvas"></canvas>
+    <script src="scripts/arrayFunctions.js"></script>
+    <script src="scripts/oscillator.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/sort.js"></script>
+    <script src="scripts/dropDown.js"></script>
+    <script src="scripts/bubbleSort.js"></script>
+    <script src="scripts/insertionSort.js"></script>
+    <script src="scripts/mergeSort.js"></script>
+    <script src="scripts/quickSort.js"></script>
+    <script src="scripts/randomSort.js"></script>
+    <script src="scripts/selectionSort.js"></script>
+    <script src="scripts/stalinSort.js"></script>
+    <script src="scripts/timSort.js"></script>
+    <script src="scripts/visualSortCheck.js"></script>
+  </body>
+</html>
