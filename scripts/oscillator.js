@@ -12,7 +12,7 @@ function createOscilator() {
   oscillator.oscillator = oscillator.oscillatorContext.createOscillator();
   oscillator.oscillator.type = "sine";
   oscillator.gainOscillator = oscillator.oscillatorContext.createGain();
-  oscillator.gainOscillator.gain.value = 0.1;
+  oscillator.gainOscillator.gain.value = 0.005;
   oscillator.oscillator.connect(oscillator.gainOscillator);
   oscillator.gainOscillator.connect(oscillator.oscillatorContext.destination);
   oscillator.oscillator.start();
