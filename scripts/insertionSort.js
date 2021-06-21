@@ -36,7 +36,7 @@ class InsertionSort extends Sort {
       } else if (index <= this.done) {
         cnt.fillStyle = "#35d618";
       } else {
-        cnt.fillStyle = "#FFF";
+        cnt.fillStyle = getColorBasedOnValue(element);
       }
       cnt.fillRect(index * sizeOfBlock + sizeOfBlock * 0.025, 0, sizeOfBlock * 0.95, cnt.canvas.height * element);
     });

@@ -73,7 +73,7 @@ class QuickSort extends Sort {
       ) {
         cnt.fillStyle = "#fcd303";
       } else {
-        cnt.fillStyle = "#ffffff";
+        cnt.fillStyle = getColorBasedOnValue(element);
       }
       cnt.fillRect(
         index * sizeOfBlock + sizeOfBlock * 0.025,

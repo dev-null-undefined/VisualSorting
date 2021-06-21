@@ -161,7 +161,7 @@ function draw() {
   cnt.fillRect(0, 0, width, height);
   const sizeOfBlock = width / arrayToSort.length;
   arrayToSort.forEach((element, index) => {
-    cnt.fillStyle = "#FFF";
+    cnt.fillStyle = getColorBasedOnValue(element);
     cnt.fillRect(
       index * sizeOfBlock + sizeOfBlock * 0.025,
       0,

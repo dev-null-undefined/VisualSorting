@@ -67,6 +67,21 @@ function deleteOnIndex(index) {
   arrayToSort.splice(index, 1);
 }
 
+function getColorBasedOnValue(value){
+  return rgbToHex(Math.max(0,Math.sin(value*Math.PI+Math.PI/2))*255,
+                  Math.max(0,Math.sin(value*Math.PI-Math.PI/2))*255,
+                  Math.max(0,Math.sin(value*Math.PI))*255);
+}
+
+function componentToHex(c) {
+  let hex = Math.floor(c).toString(16);
+  return hex.length == 1 ? "0" + hex : hex;
+ }
+
+ function rgbToHex(r, g, b) {
+  return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+ }
+
 class Part {
   constructor(a, b) {
     this.a = a;

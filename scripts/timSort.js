@@ -90,7 +90,7 @@ class TimSort extends Sort {
         } else if (index === this.pointerA) {
           cnt.fillStyle = "#c6d618";
         } else {
-          cnt.fillStyle = "#FFF";
+          cnt.fillStyle = getColorBasedOnValue(element);
         }
       } else if (index === this.index) {
         cnt.fillStyle = "#0e66c9";
@@ -99,7 +99,7 @@ class TimSort extends Sort {
       } else if (index <= this.done && index >= this.currentPart * TimSort.timPartSize()) {
         cnt.fillStyle = "#35d618";
       } else {
-        cnt.fillStyle = "#FFF";
+        cnt.fillStyle = getColorBasedOnValue(element);
       }
       cnt.fillRect(index * sizeOfBlock + sizeOfBlock * 0.025, 0, sizeOfBlock * 0.95, cnt.canvas.height * element);
     });

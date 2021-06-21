@@ -57,7 +57,7 @@ class MergeSort extends Sort {
       } else if (index === this.partBPointer) {
         cnt.fillStyle = "#c6d618";
       } else {
-        cnt.fillStyle = "#FFF";
+        cnt.fillStyle = getColorBasedOnValue(element);
       }
       cnt.fillRect(index * sizeOfBlock + sizeOfBlock * 0.025, 0, sizeOfBlock * 0.95, cnt.canvas.height * element);
     });

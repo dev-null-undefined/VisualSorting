@@ -6,7 +6,7 @@ class SortChecking extends Sort {
   }
   step() {
     getValue(arrayToSort, this.checkIndex);
-    this.checkIndex += 2;
+    this.checkIndex += 1;
     return this.checkIndex === arrayToSort.length;
   }
   draw(cnt) {
@@ -15,14 +15,18 @@ class SortChecking extends Sort {
     const sizeOfBlock = cnt.canvas.width / arrayToSort.length;
     const sortedArray = [...arrayToSort].sort();
     arrayToSort.forEach((element, index) => {
-      if (this.checkIndex >= index) {
-        if (element === sortedArray[index]) {
-          cnt.fillStyle = "#55b809";
+      if(this.checkIndex === arrayToSort.length-1){
+        cnt.fillStyle = getColorBasedOnValue(element);
+      }else{
+        if (this.checkIndex >= index) {
+          if (element === sortedArray[index]) {
+            cnt.fillStyle = "#55b809";
+          } else {
+            cnt.fillStyle = "#e01f1f";
+          }
         } else {
-          cnt.fillStyle = "#e01f1f";
+          cnt.fillStyle = getColorBasedOnValue(element);
         }
-      } else {
-        cnt.fillStyle = "#FFF";
       }
       cnt.fillRect(index * sizeOfBlock + sizeOfBlock * 0.025, 0, sizeOfBlock * 0.95, cnt.canvas.height * element);
     });

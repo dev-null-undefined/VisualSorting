@@ -21,7 +21,7 @@ class SelectionSort extends Sort {
         if (index < this.doneIndex) {
           cnt.fillStyle = "#55b809";
         } else {
-          cnt.fillStyle = "#ffffff";
+          cnt.fillStyle = getColorBasedOnValue(element);
         }
       }
       cnt.fillRect(index * sizeOfBlock + sizeOfBlock * 0.025, 0, sizeOfBlock * 0.95, cnt.canvas.height * element);
