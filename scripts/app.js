@@ -25,6 +25,9 @@ cnt.font = "30px Arial";
 
 function generateArrayAndDraw(event) {
   arrayToSort = generateArray(sizeSlider.value);
+  if (sortIndex) {
+    updateSortMethod(sortIndex);
+  }
   draw();
 }
 
