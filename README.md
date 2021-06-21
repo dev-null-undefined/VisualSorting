@@ -1,6 +1,7 @@
 # VisualSorting
 
 Sorting algoritms animated using JavaScript.
+You can test it out [here](https://threshmain.github.io/index.html)
 
 ## Available algorithms
 
