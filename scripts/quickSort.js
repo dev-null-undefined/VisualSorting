@@ -15,9 +15,7 @@ class QuickSort extends Sort {
       if (this.currentPart.a === this.currentPart.b) {
         return true;
       } else {
-        this.currentPivot =
-          this.currentPart.a +
-          Math.floor(Math.random() * (this.currentPart.b - this.currentPart.a));
+        this.currentPivot = this.currentPart.a + Math.floor(Math.random() * (this.currentPart.b - this.currentPart.a));
       }
     } else {
       if (!this.current) {
@@ -43,10 +41,7 @@ class QuickSort extends Sort {
           this.currentPart = null;
           this.current = null;
         } else {
-          if (
-            getValue(arrayToSort, this.current) <
-            getValue(arrayToSort, this.currentPivot, false)
-          ) {
+          if (getValue(arrayToSort, this.current) < getValue(arrayToSort, this.currentPivot, false)) {
             swap(++this.smaller, this.current++, arrayToSort);
           } else {
             this.current++;
@@ -66,40 +61,23 @@ class QuickSort extends Sort {
         cnt.fillStyle = "#55b809";
       } else if (index === this.current) {
         cnt.fillStyle = "#08c7d1";
-      } else if (
-        this.currentPart &&
-        this.currentPart.contains(index) &&
-        index <= this.smaller
-      ) {
+      } else if (this.currentPart && this.currentPart.contains(index) && index <= this.smaller) {
         cnt.fillStyle = "#fcd303";
       } else {
         cnt.fillStyle = getColorBasedOnValue(element);
       }
-      cnt.fillRect(
-        index * sizeOfBlock + sizeOfBlock * 0.025,
-        0,
-        sizeOfBlock * 0.95,
-        cnt.canvas.height * element
-      );
+      cnt.fillRect(index * sizeOfBlock + sizeOfBlock * 0.025, 0, sizeOfBlock * 0.95, cnt.canvas.height * element);
     });
     cnt.fillStyle = "#ff0000";
     cnt.strokeStyle = "#FF0000";
     cnt.setLineDash([5, 3]);
     cnt.beginPath();
     cnt.moveTo(0, cnt.canvas.height * arrayToSort[this.currentPivot]);
-    cnt.lineTo(
-      cnt.canvas.width,
-      cnt.canvas.height * arrayToSort[this.currentPivot]
-    );
+    cnt.lineTo(cnt.canvas.width, cnt.canvas.height * arrayToSort[this.currentPivot]);
     cnt.stroke();
     if (this.currentPart) {
       cnt.fillRect(this.currentPart.a * sizeOfBlock, 0, 1, cnt.canvas.height);
-      cnt.fillRect(
-        (this.currentPart.b + 1) * sizeOfBlock - 1,
-        0,
-        1,
-        cnt.canvas.height
-      );
+      cnt.fillRect((this.currentPart.b + 1) * sizeOfBlock - 1, 0, 1, cnt.canvas.height);
     }
   }
 }
