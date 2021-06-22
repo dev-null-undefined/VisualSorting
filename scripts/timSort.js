@@ -87,7 +87,7 @@ class TimSort extends Sort {
       if (this.doneInserting) {
         if (index === this.pointerA) {
           cnt.fillStyle = "#ff0000";
-        } else if (index === this.pointerA) {
+        } else if (index === this.pointerB) {
           cnt.fillStyle = "#c6d618";
         } else {
           cnt.fillStyle = getColorBasedOnValue(element);
@@ -101,15 +101,33 @@ class TimSort extends Sort {
       } else {
         cnt.fillStyle = getColorBasedOnValue(element);
       }
-      cnt.fillRect(index * sizeOfBlock + sizeOfBlock * 0.025, 0, sizeOfBlock * 0.95, cnt.canvas.height * element);
+      cnt.fillRect(
+        index * sizeOfBlock + sizeOfBlock * 0.025,
+        0,
+        sizeOfBlock * 0.95,
+        cnt.canvas.height * element * 0.75
+      );
     });
     cnt.fillStyle = "#ff0000";
     if (!this.doneInserting && this.currentPart !== null) {
       cnt.fillRect(this.parts[this.currentPart].a * sizeOfBlock, 0, 2, cnt.canvas.height);
-      cnt.fillRect((this.parts[this.currentPart].b + 1) * sizeOfBlock - 1, 0, 2, cnt.canvas.height);
+      if (this.parts[this.currentPart].b + 1 > arrayToSort.length) {
+        cnt.fillRect(arrayToSort.length * sizeOfBlock - 1, 0, 2, cnt.canvas.height);
+      } else {
+        cnt.fillRect((this.parts[this.currentPart].b + 1) * sizeOfBlock - 1, 0, 2, cnt.canvas.height);
+      }
     } else if (this.doneInserting) {
       cnt.fillRect(this.numberOfMarges * TimSort.timPartSize() * sizeOfBlock, 0, 2, cnt.canvas.height);
-      cnt.fillRect((this.numberOfMarges + this.margeMultiplier) * TimSort.timPartSize() * sizeOfBlock - 1, 0, 2, cnt.canvas.height);
+      if ((this.numberOfMarges + this.margesMultiplier) * TimSort.timPartSize() > arrayToSort.length) {
+        cnt.fillRect(arrayToSort.length * sizeOfBlock - 1, 0, 2, cnt.canvas.height);
+      } else {
+        cnt.fillRect(
+          (this.numberOfMarges + this.margesMultiplier) * TimSort.timPartSize() * sizeOfBlock - 1,
+          0,
+          2,
+          cnt.canvas.height
+        );
+      }
     }
   }
 }
