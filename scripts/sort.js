@@ -1,7 +1,5 @@
 class Sort {
-  constructor() {
-    // this.inpProgress = true;
-  }
+  constructor() {}
   step() {}
   draw(cnt) {}
 }
