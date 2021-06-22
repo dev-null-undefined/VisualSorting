@@ -51,11 +51,6 @@ function map_range(value, low1, high1, low2, high2) {
   return low2 + ((high2 - low2) * (value - low1)) / (high1 - low1);
 }
 
-function getValue(array, index) {
-  changeFrequency(array[index]);
-  arrayToSortAccess++;
-  return array[index];
-}
 function getValue(array, index, audio = true) {
   if (audio) changeFrequency(array[index]);
   arrayToSortAccess++;
@@ -67,20 +62,27 @@ function deleteOnIndex(index) {
   arrayToSort.splice(index, 1);
 }
 
-function getColorBasedOnValue(value){
-  return rgbToHex(Math.max(0,Math.sin(value*Math.PI+Math.PI/2))*255,
-                  Math.max(0,Math.sin(value*Math.PI-Math.PI/2))*255,
-                  Math.max(0,Math.sin(value*Math.PI))*255);
+function getColorBasedOnValue(value) {
+  let red = Math.max(0, Math.sin((value - 0.4 * value) * Math.PI));
+  let green = 1 - Math.pow(Math.max(0, Math.cos(value - 0.2)), 5);
+  let blue = Math.sin(value * Math.PI * 2) / 6 + 0.5 - Math.pow(value, 5) / 2.5;
+  return rgbToHex(red * 255, green * 255, blue * 255);
+  // rainbow
+  // return rgbToHex(
+  //   Math.max(0, Math.sin(value * Math.PI + Math.PI / 2)) * 255,
+  //   Math.max(0, Math.sin(value * Math.PI - Math.PI / 2)) * 255,
+  //   Math.max(0, Math.sin(value * Math.PI)) * 255
+  // );
 }
 
 function componentToHex(c) {
   let hex = Math.floor(c).toString(16);
   return hex.length == 1 ? "0" + hex : hex;
- }
+}
 
- function rgbToHex(r, g, b) {
+function rgbToHex(r, g, b) {
   return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
- }
+}
 
 class Part {
   constructor(a, b) {
