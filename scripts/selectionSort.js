@@ -24,7 +24,7 @@ class SelectionSort extends Sort {
           cnt.fillStyle = getColorBasedOnValue(element);
         }
       }
-      cnt.fillRect(index * sizeOfBlock + sizeOfBlock * 0.025, 0, sizeOfBlock * 0.95, cnt.canvas.height * element);
+      cnt.fillRect(index * sizeOfBlock + sizeOfBlock * 0.025, 0, sizeOfBlock * 0.99, cnt.canvas.height * element);
     });
   }
 }

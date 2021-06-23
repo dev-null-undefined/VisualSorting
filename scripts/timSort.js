@@ -101,7 +101,7 @@ class TimSort extends Sort {
       } else {
         cnt.fillStyle = getColorBasedOnValue(element);
       }
-      cnt.fillRect(index * sizeOfBlock + sizeOfBlock * 0.025, 0, sizeOfBlock * 0.95, cnt.canvas.height * element);
+      cnt.fillRect(index * sizeOfBlock + sizeOfBlock * 0.025, 0, sizeOfBlock * 0.99, cnt.canvas.height * element);
     });
     cnt.fillStyle = "#ff0000";
     if (!this.doneInserting && this.currentPart !== null) {

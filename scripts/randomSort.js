@@ -21,7 +21,7 @@ class RandomSort extends Sort {
       } else {
         cnt.fillStyle = "#e01f1f";
       }
-      cnt.fillRect(index * sizeOfBlock + sizeOfBlock * 0.025, 0, sizeOfBlock * 0.95, cnt.canvas.height * element);
+      cnt.fillRect(index * sizeOfBlock + sizeOfBlock * 0.025, 0, sizeOfBlock * 0.99, cnt.canvas.height * element);
     });
   }
 }
