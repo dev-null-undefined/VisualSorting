@@ -25,13 +25,12 @@ class LSDRadixSort extends Sort {
       if (this.currentDigit == 1) {
         return true;
       }
-    } else {
-      if (this.getDigit(arrayToSort[this.index], this.currentDigit) == this.digit) {
-        move(this.index, this.position, arrayToSort);
-        this.position++;
-      }
-      this.index++;
     }
+    if (this.getDigit(arrayToSort[this.index], this.currentDigit) == this.digit) {
+      move(this.index, this.position, arrayToSort);
+      this.position++;
+    }
+    this.index++;
   }
   getDigit(number, position) {
     if (number.toString().length <= position) {
