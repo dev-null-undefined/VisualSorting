@@ -144,6 +144,9 @@ function updateSortMethod(value) {
     case "8":
       sortMethod = new StalinSort();
       break;
+    case "9":
+      sortMethod = new LSDRadixSort();
+      break;
     default:
       alert("Something went wrong pls report this to admin@debianserver.cz error-1:" + value);
       break;
