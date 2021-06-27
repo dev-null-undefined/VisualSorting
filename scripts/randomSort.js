@@ -6,7 +6,7 @@ class RandomSort extends Sort {
   step() {
     arrayToSort = randomizePositions(arrayToSort);
     if (isSorted(arrayToSort)) {
-      resumeOscilator();
+      resumeOscillator();
       return true;
     }
   }

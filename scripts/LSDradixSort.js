@@ -12,7 +12,6 @@ class LSDRadixSort extends Sort {
     this.digit = 0;
   }
   step() {
-    this.tempArray = [];
     if (this.index >= arrayToSort.length) {
       this.digit++;
       this.index = this.position;
@@ -22,11 +21,11 @@ class LSDRadixSort extends Sort {
       this.index = 0;
       this.position = 0;
       this.currentDigit--;
-      if (this.currentDigit == 1) {
+      if (this.currentDigit === 1) {
         return true;
       }
     }
-    if (this.getDigit(getValue(arrayToSort, this.index), this.currentDigit) == this.digit) {
+    if (this.getDigit(getValue(arrayToSort, this.index), this.currentDigit) === this.digit) {
       move(this.index, this.position, arrayToSort);
       this.position++;
     }

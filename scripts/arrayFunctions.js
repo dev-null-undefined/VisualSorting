@@ -1,6 +1,6 @@
 // Array Functions
 function randomizePositions(array, timesToSwap = array.length) {
-  for (let i = 0; i < array.length; i++) {
+  for (let i = 0; i < timesToSwap; i++) {
     swap(Math.floor(Math.random() * array.length), Math.floor(Math.random() * array.length), array);
   }
   arrayToSortModifications += array.length;
@@ -20,12 +20,12 @@ function swap(a, b, array) {
   const itemA = array[a];
   array[a] = array[b];
   array[b] = itemA;
-  if (a != b) {
+  if (a !== b) {
     arrayToSortModifications++;
   }
 }
 function move(indexA, indexB, array) {
-  if (indexA != indexB) {
+  if (indexA !== indexB) {
     arrayToSortModifications++;
   }
   return array.splice(indexB, 0, array.splice(indexA, 1)[0]);
@@ -77,7 +77,7 @@ function getColorBasedOnValue(value) {
 
 function componentToHex(c) {
   let hex = Math.floor(c).toString(16);
-  return hex.length == 1 ? "0" + hex : hex;
+  return hex.length === 1 ? "0" + hex : hex;
 }
 
 function rgbToHex(r, g, b) {

@@ -4,12 +4,11 @@ class TimSort extends Sort {
     super();
     this.numberOfMarges = 0;
     this.parts = [];
-    this.margeMultiplier = 2;
-    let deviderIndex = 0;
+    let dividerIndex = 0;
     do {
-      this.parts.push(new Part(deviderIndex, deviderIndex + TimSort.timPartSize()));
-      deviderIndex += TimSort.timPartSize();
-    } while (deviderIndex < arrayToSort.length);
+      this.parts.push(new Part(dividerIndex, dividerIndex + TimSort.timPartSize()));
+      dividerIndex += TimSort.timPartSize();
+    } while (dividerIndex < arrayToSort.length);
     this.currentPart = null;
     this.pointerB = null;
     this.pointerA = null;

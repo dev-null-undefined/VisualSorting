@@ -1,4 +1,4 @@
-var customSelect, j, backGroundOptions, firstElement, options, option;
+let customSelect, j, backGroundOptions, firstElement, options, option;
 customSelect = document.getElementsByClassName("custom-select");
 backGroundOptions = customSelect[0].getElementsByTagName("select")[0];
 firstElement = document.createElement("DIV");
@@ -11,7 +11,7 @@ for (j = 1; j < backGroundOptions.length; j++) {
   option = document.createElement("DIV");
   option.innerHTML = backGroundOptions.options[j].innerHTML;
   option.addEventListener("click", function (e) {
-    var y, i, k, s, h;
+    let y, i, k, s, h;
     s = this.parentNode.parentNode.getElementsByTagName("select")[0];
     h = this.parentNode.previousSibling;
     for (i = 0; i < s.length; i++) {
@@ -39,15 +39,15 @@ firstElement.addEventListener("click", function (e) {
   this.classList.toggle("select-arrow-active");
 });
 
-function closeAllSelect(elmnt) {
-  var x;
-  var y;
-  var i;
-  var arrNo = [];
+function closeAllSelect(element) {
+  let x;
+  let y;
+  let i;
+  const arrNo = [];
   x = document.getElementsByClassName("select-items");
   y = document.getElementsByClassName("select-selected");
   for (i = 0; i < y.length; i++) {
-    if (elmnt === y[i]) {
+    if (element === y[i]) {
       arrNo.push(i);
     } else {
       y[i].classList.remove("select-arrow-active");

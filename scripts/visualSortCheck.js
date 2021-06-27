@@ -1,4 +1,4 @@
-// SortCheckign
+// SortChecking
 class SortChecking extends Sort {
   constructor() {
     super();

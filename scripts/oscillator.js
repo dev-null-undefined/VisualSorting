@@ -1,11 +1,12 @@
-var oscillator;
-function stopOscilator() {
+let oscillator;
+
+function stopOscillator() {
   oscillator.gainOscillator.disconnect();
 }
-function resumeOscilator() {
+function resumeOscillator() {
   oscillator.gainOscillator.connect(oscillator.oscillatorContext.destination);
 }
-function createOscilator() {
+function createOscillator() {
   oscillator = { oscillatorContext: null, oscillator: null, gainOscillator: null, minF: 100, maxF: 700 };
   oscillator.oscillatorContext = new AudioContext();
   oscillator.oscillatorContext.resume();
@@ -16,7 +17,7 @@ function createOscilator() {
   oscillator.oscillator.connect(oscillator.gainOscillator);
   oscillator.gainOscillator.connect(oscillator.oscillatorContext.destination);
   oscillator.oscillator.start();
-  stopOscilator();
+  stopOscillator();
 }
 function changeFrequency(value) {
   oscillator.oscillator.frequency.value = map_range(value, 0, 1, oscillator.minF, oscillator.maxF);

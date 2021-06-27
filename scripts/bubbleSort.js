@@ -1,4 +1,4 @@
-// Buble sort variables
+// Bubble sort variables
 class BubbleSort extends Sort {
   constructor() {
     super();
