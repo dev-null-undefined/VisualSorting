@@ -3,10 +3,6 @@ class LSDRadixSort extends Sort {
   constructor() {
     super();
     this.currentDigit = 17;
-    this.buckets = [];
-    for (let i = 0; i < 10; i++) {
-      this.buckets[i] = [];
-    }
     this.position = 0;
     this.index = 0;
     this.digit = 0;
@@ -14,7 +10,7 @@ class LSDRadixSort extends Sort {
   step() {
     if (this.index >= arrayToSort.length) {
       this.digit++;
-      this.index = this.position;
+      this.index = this.position-1;
     }
     if (this.digit > 9) {
       this.digit = 0;
@@ -25,7 +21,7 @@ class LSDRadixSort extends Sort {
         return true;
       }
     }
-    if (this.getDigit(getValue(arrayToSort, this.index), this.currentDigit) === this.digit) {
+    if (this.getDigit(getValue(arrayToSort, this.index), this.currentDigit) == this.digit) {
       move(this.index, this.position, arrayToSort);
       this.position++;
     }
