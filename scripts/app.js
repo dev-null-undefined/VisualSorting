@@ -46,8 +46,8 @@ function saveValue(x1, y1, x2) {
     }
     y1 = Math.max(Math.min(height, y1), 0)
 
-    let index1 = Math.floor((x1 / width) * sizeSlider.value);
-    let index2 = Math.floor((x2 / width) * sizeSlider.value);
+    let index1 = Math.min(Math.floor((x1 / width) * sizeSlider.value),sizeSlider.value-1)
+    let index2 = Math.min(Math.floor((x2 / width) * sizeSlider.value),sizeSlider.value-1);
     if (index1 > index2) {
         let saveValue = index1;
         index1 = index2;
