@@ -46,8 +46,8 @@ function saveValue(x1, y1, x2) {
     }
     y1 = Math.max(Math.min(height, y1), 0)
 
-    let index1 = Math.min(Math.floor((x1 / width) * sizeSlider.value),sizeSlider.value-1)
-    let index2 = Math.min(Math.floor((x2 / width) * sizeSlider.value),sizeSlider.value-1);
+    let index1 = Math.min(Math.floor((x1 / width) * sizeSlider.value), sizeSlider.value - 1)
+    let index2 = Math.min(Math.floor((x2 / width) * sizeSlider.value), sizeSlider.value - 1);
     if (index1 > index2) {
         let saveValue = index1;
         index1 = index2;
@@ -163,45 +163,17 @@ function updateSortMethod(value) {
     arrayToSortAccess = 0;
     arrayToSortModifications = 0;
     isDoneSorting = false;
-    if (sortIndex === "7" && value !== "7" && sortingTimeout) {
+    if(value==="7"){
+        osciallator.stop();
+    }else if(sortIndex === "7" && sortingTimeout){
         osciallator.resume();
     }
-    switch (value) {
-        case "1":
-            sortMethod = new TimSort();
-            break;
-        case "2":
-            sortMethod = new InsertionSort();
-            break;
-        case "3":
-            sortMethod = new SelectionSort();
-            break;
-        case "4":
-            sortMethod = new QuickSort();
-            break;
-        case "5":
-            sortMethod = new MergeSort();
-            break;
-        case "6":
-            sortMethod = new BubbleSort();
-            break;
-        case "7":
-            osciallator.stop();
-            sortMethod = new RandomSort();
-            break;
-        case "8":
-            sortMethod = new StalinSort();
-            break;
-        case "9":
-            sortMethod = new LSDRadixSort();
-            break;
-        case "10":
-            sortMethod = new MSDRadixSort();
-            break;
-        default:
-            alert("Something went wrong pls report this to admin@debianserver.cz error-1:" + value);
-            break;
+    let sortClass = sortsDictionary[value];
+    if (sortClass === undefined) {
+        alert("Something went wrong pls report this to admin@debianserver.cz error-1:" + value);
+        return;
     }
+    sortMethod = new sortClass();
     sortIndex = value;
 }
 
