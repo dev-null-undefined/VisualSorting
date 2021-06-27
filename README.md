@@ -14,3 +14,4 @@ You can test it out [here](http://www.debianserver.cz/www/VisualSorting/)
 - Random sort
 - Stalin sort
 - LSD Radix sort
+- MSD Radix sort

@@ -1,4 +1,4 @@
-// Radix Sort
+// LSD Radix Sort
 class LSDRadixSort extends Sort {
     constructor() {
         super();
@@ -11,9 +11,9 @@ class LSDRadixSort extends Sort {
     step() {
         if (this.index >= arrayToSort.length) {
             this.digit++;
-            this.index = this.position - 1;
+            this.index = this.position;
         }
-        if (this.digit > 9) {
+        if (this.digit > 9 || this.position >= arrayToSort.length) {
             this.digit = 0;
             this.index = 0;
             this.position = 0;
@@ -22,19 +22,11 @@ class LSDRadixSort extends Sort {
                 return true;
             }
         }
-        if (this.getDigit(getValue(arrayToSort, this.index), this.currentDigit) == this.digit) {
+        if (getDigit(getValue(arrayToSort, this.index), this.currentDigit) == this.digit) {
             move(this.index, this.position, arrayToSort);
             this.position++;
         }
         this.index++;
-    }
-
-    getDigit(number, position) {
-        if (number.toString().length <= position) {
-            return 0;
-        } else {
-            return number.toString()[position];
-        }
     }
 
     draw(cnt) {

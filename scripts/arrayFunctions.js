@@ -89,6 +89,14 @@ function rgbToHex(r, g, b) {
     return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
 
+function getDigit(number, position) {
+    if (number.toString().length <= position) {
+        return 0;
+    } else {
+        return number.toString()[position];
+    }
+}
+
 class Part {
     constructor(a, b) {
         this.a = a;

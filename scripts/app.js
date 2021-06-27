@@ -195,6 +195,9 @@ function updateSortMethod(value) {
         case "9":
             sortMethod = new LSDRadixSort();
             break;
+        case "10":
+            sortMethod = new MSDRadixSort();
+            break;
         default:
             alert("Something went wrong pls report this to admin@debianserver.cz error-1:" + value);
             break;
