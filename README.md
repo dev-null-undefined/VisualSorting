@@ -1,6 +1,6 @@
 # VisualSorting
 
-Sorting algoritms animated using JavaScript.
+Sorting algorithms animated using JavaScript.
 You can test it out [here](https://threshmain.github.io/index.html)
 
 ## Available algorithms
@@ -13,3 +13,4 @@ You can test it out [here](https://threshmain.github.io/index.html)
 - Bubble sort
 - Random sort
 - Stalin sort
+- LSD Radix sort
