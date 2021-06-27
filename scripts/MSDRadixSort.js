@@ -54,5 +54,10 @@ class MSDRadixSort extends Sort {
             cnt.fillStyle = getColorBasedOnValue(element);
             cnt.fillRect(index * sizeOfBlock + sizeOfBlock * 0.025, 0, sizeOfBlock * 0.99, cnt.canvas.height * element);
         });
+        cnt.fillStyle = "#f00";
+        if (this.workingPart) {
+            cnt.fillRect(this.workingPart.a * sizeOfBlock, 0, 1, cnt.canvas.height);
+            cnt.fillRect((this.workingPart.b) * sizeOfBlock - 1, 0, 1, cnt.canvas.height);
+        }
     }
 }
