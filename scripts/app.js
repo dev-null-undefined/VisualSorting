@@ -64,18 +64,18 @@ function switchSorting() {
       // Stop
       clearTimeout(sortingTimeout);
       sortingTimeout = null;
-      stopOscillator();
+      osciallator.stop();
       startButton.innerText = "Start sorting";
       startButton.className = "startButton";
       generateButton.disabled = false;
       sizeSlider.disabled = false;
     } else {
-      if (oscillator === undefined) {
-        createOscillator();
+      if (osciallator === null) {
+        osciallator=new Oscillator();
       }
       isDoneSorting = false;
       if (sortIndex !== "7") {
-        resumeOscillator();
+        osciallator.resume();
       }
       startButton.innerText = "Stop sorting";
       startButton.className = "stopButton";
@@ -114,7 +114,7 @@ function updateSortMethod(value) {
   arrayToSortModifications = 0;
   isDoneSorting = false;
   if (sortIndex === "7" && value !== "7" && sortingTimeout) {
-    resumeOscillator();
+    osciallator.resume();
   }
   switch (value) {
     case "1":
@@ -136,9 +136,7 @@ function updateSortMethod(value) {
       sortMethod = new BubbleSort();
       break;
     case "7":
-      if (oscillator) {
-        stopOscillator();
-      }
+        osciallator.stop();
       sortMethod = new RandomSort();
       break;
     case "8":
