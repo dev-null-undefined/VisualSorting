@@ -1,5 +1,10 @@
 class Sort {
-  constructor() {}
-  step() {}
-  draw(cnt) {}
+    constructor() {
+    }
+
+    step() {
+    }
+
+    draw(cnt) {
+    }
 }
