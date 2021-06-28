@@ -121,7 +121,7 @@ function speedSliderTextOnChange(event) {
     if (value >= speedSlider.min && value <= speedSlider.max && speedSlider.value !== value) {
         speedSlider.value = value;
     }
-    speedSliderText.value=speedSlider.value;
+    speedSliderText.value = speedSlider.value;
 }
 
 function sizeSliderTextOnChange(event) {
@@ -129,7 +129,7 @@ function sizeSliderTextOnChange(event) {
     if (value >= sizeSlider.min && value <= sizeSlider.max && sizeSlider.value !== value) {
         sizeSlider.value = value;
     }
-    sizeSliderOnChange()
+    sizeSliderOnChange();
 }
 
 
@@ -156,6 +156,7 @@ function switchSorting() {
             startButton.className = "startButton";
             generateButton.disabled = false;
             sizeSlider.disabled = false;
+            sizeSliderText.disabled = false;
         } else {
             isDoneSorting = false;
             if (sortMethod.constructor.sound()) {
@@ -165,6 +166,7 @@ function switchSorting() {
             startButton.className = "stopButton";
             generateButton.disabled = true;
             sizeSlider.disabled = true;
+            sizeSliderText.disabled = true;
             sortingRecursion();
         }
     } else {
