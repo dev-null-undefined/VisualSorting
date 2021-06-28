@@ -26,4 +26,7 @@ class RandomSort extends Sort {
             cnt.fillRect(index * sizeOfBlock + sizeOfBlock * 0.025, 0, sizeOfBlock * 0.99, cnt.canvas.height * element);
         });
     }
+    static sound(){
+        return false;
+    }
 }

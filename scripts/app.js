@@ -29,10 +29,10 @@ canvas.addEventListener('mousemove', e => {
     }
     lastPositionX = e.offsetX;
 });
-window.addEventListener('mousedown', e => {
+window.addEventListener('mousedown', () => {
     isDrawing = true;
 });
-window.addEventListener('mouseup', e => {
+window.addEventListener('mouseup', () => {
     isDrawing = false;
     lastPositionX = null;
 });
@@ -67,7 +67,7 @@ function saveValue(x1, y1, x2) {
 const cnt = canvas.getContext("2d");
 cnt.font = "30px Arial";
 
-function generateArrayAndDraw(event) {
+function generateArrayAndDraw() {
     arrayToSort = generateArray(sizeSlider.value);
     if (sortIndex) {
         updateSortMethod(sortIndex);
@@ -113,18 +113,15 @@ function switchSorting() {
             // Stop
             clearTimeout(sortingTimeout);
             sortingTimeout = null;
-            osciallator.stop();
+            oscillator.stop();
             startButton.innerText = "Start sorting";
             startButton.className = "startButton";
             generateButton.disabled = false;
             sizeSlider.disabled = false;
         } else {
-            if (osciallator === null) {
-                osciallator = new Oscillator();
-            }
             isDoneSorting = false;
-            if (sortIndex !== "7") {
-                osciallator.resume();
+            if (sortMethod.constructor.sound()) {
+                oscillator.resume();
             }
             startButton.innerText = "Stop sorting";
             startButton.className = "stopButton";
@@ -163,17 +160,18 @@ function updateSortMethod(value) {
     arrayToSortAccess = 0;
     arrayToSortModifications = 0;
     isDoneSorting = false;
-    if(value==="7"){
-        osciallator.stop();
-    }else if(sortIndex === "7" && sortingTimeout){
-        osciallator.resume();
-    }
     let sortClass = sortsDictionary[value];
     if (sortClass === undefined) {
         alert("Something went wrong pls report this to admin@debianserver.cz error-1:" + value);
         return;
     }
     sortMethod = new sortClass();
+
+    if (!sortClass.sound()) {
+        oscillator.stop();
+    } else if (sortsDictionary[sortIndex] !== undefined && !sortsDictionary[sortIndex].sound() && sortingTimeout) {
+        oscillator.resume();
+    }
     sortIndex = value;
 }
 

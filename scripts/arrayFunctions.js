@@ -57,7 +57,7 @@ function map_range(value, low1, high1, low2, high2) {
 }
 
 function getValue(array, index, audio = true) {
-    if (audio) osciallator.changeFrequency(array[index]);
+    if (audio) oscillator.changeFrequency(array[index]);
     arrayToSortAccess++;
     return array[index];
 }
