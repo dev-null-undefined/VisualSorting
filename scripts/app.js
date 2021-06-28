@@ -11,8 +11,8 @@ const speedSlider = document.getElementById("speed");
 const sizeSlider = document.getElementById("arraySize");
 const generateButton = document.getElementById("generator");
 const startButton = document.getElementById("startButton");
-const sizeSliderInfo = document.getElementById("arraySizeText");
-const speedSliderInfo = document.getElementById("speedText");
+const sizeSliderText = document.getElementById("arraySizeText");
+const speedSliderText = document.getElementById("speedText");
 
 const canvas = document.getElementById("canvas");
 let width = window.innerWidth * 0.8;
@@ -82,18 +82,37 @@ speedSlider.onchange = speedSliderOnChange;
 sizeSlider.onchange = sizeSliderOnChange;
 speedSlider.oninput = speedSliderOnChange;
 sizeSlider.oninput = sizeSliderOnChange;
+speedSliderText.onchange = speedSliderTextOnChange;
+sizeSliderText.onchange = sizeSliderTextOnChange;
 
-function sizeSliderOnChange(event) {
+function sizeSliderOnChange() {
     generateArrayAndDraw();
     if (sortIndex) {
         updateSortMethod(sortIndex);
     }
-    sizeSliderInfo.innerText = "Array size: " + event.target.value;
+    sizeSliderText.value = sizeSlider.value;
 }
 
 function speedSliderOnChange(event) {
-    speedSliderInfo.innerText = "Speed: " + event.target.value;
+    speedSliderText.value = event.target.value;
 }
+
+function speedSliderTextOnChange(event) {
+    const value = parseFloat(event.target.value);
+    if (value > speedSlider.min && value < speedSlider.max && speedSlider.value !== value) {
+        speedSlider.value = value;
+    }
+    speedSliderText.value=speedSlider.value;
+}
+
+function sizeSliderTextOnChange(event) {
+    const value = parseInt(event.target.value);
+    if (value > sizeSlider.min && value < sizeSlider.max && sizeSlider.value !== value) {
+        sizeSlider.value = value;
+    }
+    sizeSliderOnChange()
+}
+
 
 window.onresize = windowsResize;
 

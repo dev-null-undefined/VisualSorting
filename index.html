@@ -15,11 +15,17 @@
       <div class="middle">
         <div class="sliderContainer">
           <input type="range" min="5" max="750" value="64" class="slider" id="arraySize" />
-          <div id="arraySizeText">Array size: 64</div>
+          <div class="textInput">
+            <label for="arraySizeText">Array size: </label>
+            <input id="arraySizeText" type="text" value="64"/>
+          </div>
         </div>
         <div class="sliderContainer">
           <input type="range" min="0" max="25" step="0.25" value="10" class="slider" id="speed" />
-          <div id="speedText">Speed: 10</div>
+          <div class="textInput">
+            <label for="speedText">Speed: </label>
+            <input id="speedText" type="text" value="10"/>
+          </div>
         </div>
         <div id="sortMethods" class="custom-select">
           <select>
