@@ -55,7 +55,7 @@ function saveValue(x1, y1, x2) {
     }
     let value = y1 / height;
     for (; index1 <= index2; index1++) {
-        arrayToSort[index1] = value;
+        arrayToSort[index1] = Math.min(1,value+Math.random()/500);
     }
     draw()
     if (sortIndex != null) {
