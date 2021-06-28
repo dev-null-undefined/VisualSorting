@@ -99,7 +99,7 @@ function speedSliderOnChange(event) {
 
 function speedSliderTextOnChange(event) {
     const value = parseFloat(event.target.value);
-    if (value > speedSlider.min && value < speedSlider.max && speedSlider.value !== value) {
+    if (value >= speedSlider.min && value <= speedSlider.max && speedSlider.value !== value) {
         speedSlider.value = value;
     }
     speedSliderText.value=speedSlider.value;
@@ -107,7 +107,7 @@ function speedSliderTextOnChange(event) {
 
 function sizeSliderTextOnChange(event) {
     const value = parseInt(event.target.value);
-    if (value > sizeSlider.min && value < sizeSlider.max && sizeSlider.value !== value) {
+    if (value >= sizeSlider.min && value <= sizeSlider.max && sizeSlider.value !== value) {
         sizeSlider.value = value;
     }
     sizeSliderOnChange()

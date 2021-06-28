@@ -15,6 +15,9 @@ class MSDRadixSort extends Sort {
     }
 
     step() {
+        if(this.currentDigit+1===20){
+            return true;
+        }
         if (this.index >= this.workingPart.b) {
             this.currentPart.b = this.position;
             if (this.currentPart.size() > 1) {
