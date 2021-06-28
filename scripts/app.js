@@ -22,45 +22,64 @@ canvas.height = height;
 
 
 let isDrawing = false;
-let lastPositionX = null;
+let lastPosition = {x: null, y: null};
 canvas.addEventListener('mousemove', e => {
     if (isDrawing && sortingTimeout === null) {
-        saveValue(e.offsetX, e.offsetY, lastPositionX);
+        saveValue(e.offsetX, e.offsetY, lastPosition.x, lastPosition.y);
     }
-    lastPositionX = e.offsetX;
+    lastPosition.x = e.offsetX;
+    lastPosition.y = e.offsetY;
 });
 window.addEventListener('mousedown', () => {
     isDrawing = true;
 });
 window.addEventListener('mouseup', () => {
     isDrawing = false;
-    lastPositionX = null;
+    lastPosition.x = null;
+    lastPosition.y = null;
 });
 
-function saveValue(x1, y1, x2) {
-    x1 = Math.max(Math.min(width, x1), 0)
+function saveValue(x1, y1, x2, y2) {
+    x1 = Math.max(Math.min(width, x1), 0);
     if (x2 == null) {
-        x2 = x1
+        x2 = x1;
     } else {
-        x2 = Math.max(Math.min(width, x2), 0)
+        x2 = Math.max(Math.min(width, x2), 0);
     }
-    y1 = Math.max(Math.min(height, y1), 0)
 
-    let index1 = Math.min(Math.floor((x1 / width) * sizeSlider.value), sizeSlider.value - 1)
+    y1 = Math.max(Math.min(height, y1), 0);
+    if (y2 == null) {
+        y2 = y1;
+    } else {
+        y2 = Math.max(Math.min(height, y2), 0);
+    }
+
+    let index1 = Math.min(Math.floor((x1 / width) * sizeSlider.value), sizeSlider.value - 1);
     let index2 = Math.min(Math.floor((x2 / width) * sizeSlider.value), sizeSlider.value - 1);
     if (index1 > index2) {
         let saveValue = index1;
         index1 = index2;
         index2 = saveValue;
+        saveValue = y2;
+        y2 = y1;
+        y1 = saveValue;
     }
-    let value = y1 / height;
-    for (; index1 <= index2; index1++) {
-        arrayToSort[index1] = Math.min(1,value+Math.random()/500);
+
+    if (index1 === index2) {
+        arrayToSort[index1] = randomiseValue(y1 / height);
+    } else {
+        for (let i = index1; i <= index2; i++) {
+            arrayToSort[i] = randomiseValue(map_range(i, index1, index2, y1, y2) / height);
+        }
     }
-    draw()
+    draw();
     if (sortIndex != null) {
         updateSortMethod(sortIndex);
     }
+}
+
+function randomiseValue(value, divider = 500) {
+    return Math.max(0.0001, Math.min(0.999999, value + Math.random() / divider) - Math.random() / divider);
 }
 
 
