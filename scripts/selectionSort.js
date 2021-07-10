@@ -3,13 +3,22 @@ class SelectionSort extends Sort {
     constructor() {
         super();
         this.doneIndex = 0;
+        this.currentIndex = 0;
+        this.minimumIndex = 0;
     }
 
     step() {
-        this.currentMinimumIndex = minIndex(arrayToSort.slice(this.doneIndex));
-        swap(this.doneIndex + this.currentMinimumIndex, this.doneIndex, arrayToSort);
-        getValue(arrayToSort, this.doneIndex++);
-        return this.doneIndex === arrayToSort.length;
+        if (this.currentIndex === arrayToSort.length) {
+            swap(this.doneIndex, this.minimumIndex, arrayToSort);
+            this.doneIndex++;
+            this.currentIndex = this.doneIndex;
+            this.minimumIndex = this.currentIndex;
+        }
+        if (getValue(arrayToSort, this.currentIndex) < getValue(arrayToSort, this.minimumIndex)) {
+            this.minimumIndex = this.currentIndex;
+        }
+        this.currentIndex++;
+        return this.doneIndex === arrayToSort.length - 1;
     }
 
     draw(cnt) {
@@ -17,15 +26,16 @@ class SelectionSort extends Sort {
         cnt.fillRect(0, 0, cnt.canvas.width, cnt.canvas.height);
         const sizeOfBlock = cnt.canvas.width / arrayToSort.length;
         arrayToSort.forEach((element, index) => {
-            if (index === this.currentMinimumIndex + this.doneIndex) {
+            if (index === this.minimumIndex) {
                 cnt.fillStyle = "#5255eb";
+            } else if (index < this.doneIndex) {
+                cnt.fillStyle = "#55b809";
+            } else if (index === this.currentIndex) {
+                cnt.fillStyle = "#FF0";
             } else {
-                if (index < this.doneIndex) {
-                    cnt.fillStyle = "#55b809";
-                } else {
-                    cnt.fillStyle = getColorBasedOnValue(element);
-                }
+                cnt.fillStyle = getColorBasedOnValue(element);
             }
+
             cnt.fillRect(index * sizeOfBlock + sizeOfBlock * 0.025, 0, sizeOfBlock * 0.99, cnt.canvas.height * element);
         });
     }
