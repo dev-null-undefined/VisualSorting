@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="style.css"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Visual sorting</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162186655-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag() {
-            dataLayer.push(arguments);
-        }
+        function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-162186655-1');
     </script>
@@ -24,12 +22,14 @@
     </div>
     <div class="middle">
         <div class="sliderContainer">
-            <input type="range" min="5" max="750" value="64" class="slider" id="arraySize"/>
+            <input type="range" min="5" max="750" value="64" class="slider" id="arraySize" />
             <div class="textInput">
                 <label for="arraySizeText">Array size: </label>
                 <input id="arraySizeText" type="text" value="64"/>
             </div>
-            <input type="range" min="0" max="25" step="0.25" value="10" class="slider" id="speed"/>
+        </div>
+        <div class="sliderContainer">
+            <input type="range" min="0" max="25" step="0.25" value="10" class="slider" id="speed" />
             <div class="textInput">
                 <label for="speedText">Speed: </label>
                 <input id="speedText" type="text" value="10"/>
