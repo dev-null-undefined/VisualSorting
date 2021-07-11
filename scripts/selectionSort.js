@@ -5,6 +5,7 @@ class SelectionSort extends Sort {
         this.doneIndex = 0;
         this.currentIndex = 0;
         this.minimumIndex = 0;
+        this.minimumValue = getValue(arrayToSort, this.minimumIndex,false);
     }
 
     step() {
@@ -13,9 +14,12 @@ class SelectionSort extends Sort {
             this.doneIndex++;
             this.currentIndex = this.doneIndex;
             this.minimumIndex = this.currentIndex;
+            this.minimumValue = getValue(arrayToSort, this.minimumIndex);
         }
-        if (getValue(arrayToSort, this.currentIndex) < getValue(arrayToSort, this.minimumIndex)) {
+        const currentValue=getValue(arrayToSort,this.currentIndex);
+        if (currentValue < this.minimumValue) {
             this.minimumIndex = this.currentIndex;
+            this.minimumValue = currentValue;
         }
         this.currentIndex++;
         return this.doneIndex === arrayToSort.length - 1;
