@@ -1,7 +1,7 @@
 # VisualSorting
 
 Sorting algorithms animated using JavaScript.
-You can test it out [here](http://www.debianserver.cz/www/VisualSorting/)
+You can test it out [here](https://threshmain.github.io/)
 
 ## Available algorithms
 
