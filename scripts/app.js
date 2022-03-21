@@ -193,7 +193,7 @@ function sortingRecursion() {
     cnt.font = "25px sans-serif";
     cnt.fillText("Access:" + arrayToSortAccess * 2, 0, canvas.height);
     cnt.fillText("Modify:" + arrayToSortModifications, 0, canvas.height - 25);
-    sortingTimeout = setTimeout(sortingRecursion, (speedSlider.min + (speedSlider.max - speedSlider.value)) * 5);
+    sortingTimeout = setTimeout(sortingRecursion, Math.pow((speedSlider.min + (speedSlider.max - speedSlider.value)),2)  );
 }
 
 function updateSortMethod(value) {
