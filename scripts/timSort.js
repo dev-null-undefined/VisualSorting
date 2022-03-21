@@ -14,6 +14,9 @@ class TimSort extends Sort {
         this.pointerA = null;
         this.numberOfMarges = 0;
         this.margesMultiplier = 2;
+        this.done = 0;
+        this.low = 0;
+        this.high = 0;
     }
 
     static timPartSize() {
@@ -26,28 +29,33 @@ class TimSort extends Sort {
         } else if (!this.doneInserting) {
             // Inserting part of Tim sort
             const part = this.parts[this.currentPart];
-            if (!this.index) {
-                this.index = part.a + 1;
-                this.done = part.a;
-                this.comparing = part.a;
-            } else if (this.done === arrayToSort.length - 1 || this.done === part.b) {
+
+            if (this.done === arrayToSort.length || this.done === part.b) {
                 if (this.currentPart < this.parts.length - 1) {
                     this.currentPart++;
                 } else {
                     this.doneInserting = true;
                 }
-            } else if (getValue(arrayToSort, this.index, false) > getValue(arrayToSort, this.comparing)) {
-                move(this.index, this.comparing + 1, arrayToSort);
+            }
+
+            if (this.low >= this.high) {
+                move(this.done, this.low, arrayToSort);
                 this.done++;
-                this.index = this.done + 1;
-                this.comparing = this.done;
-            } else if (this.comparing === part.a) {
-                move(this.index, part.a, arrayToSort);
-                this.done++;
-                this.index = this.done + 1;
-                this.comparing = this.done;
+                this.low = part.a;
+                this.high = this.done;
+                return false;
+            }
+
+            const mid = Math.floor((this.low + this.high) / 2);
+            let value = getValue(arrayToSort, mid);
+            let compare = getValue(arrayToSort, this.done, false);
+            if (compare < value) {
+                this.high = mid;
+            } else if (compare > value) {
+                this.low = mid + 1;
             } else {
-                this.comparing--;
+                this.low = mid;
+                this.high = mid;
             }
         } else if (this.pointerB === null) {
             // Marge part of the Tim sort
@@ -94,14 +102,25 @@ class TimSort extends Sort {
                 } else {
                     cnt.fillStyle = getColorBasedOnValue(element);
                 }
-            } else if (index === this.index) {
-                cnt.fillStyle = "#0e66c9";
-            } else if (index === this.comparing) {
-                cnt.fillStyle = "#c6d618";
-            } else if (index <= this.done && index >= this.currentPart * TimSort.timPartSize()) {
-                cnt.fillStyle = "#35d618";
             } else {
-                cnt.fillStyle = getColorBasedOnValue(element);
+                cnt.fillStyle = "#c6d618";
+                cnt.fillRect((this.high+1) * sizeOfBlock, 0, 1, cnt.canvas.height);
+                cnt.fillStyle = "#d6a318";
+                cnt.fillRect(this.low * sizeOfBlock, 0, 1, cnt.canvas.height);
+
+                if (index === this.done) {
+                    cnt.fillStyle = "#0e66c9";
+                }else if(index === this.low && index === this.high){
+                    cnt.fillStyle = "#c54816";
+                } else if (index === this.low) {
+                    cnt.fillStyle = "#c6d618";
+                } else if (index === this.high) {
+                    cnt.fillStyle = "#d6a318";
+                } else if (index < this.done) {
+                    cnt.fillStyle = "#35d618";
+                } else {
+                    cnt.fillStyle = getColorBasedOnValue(element);
+                }
             }
             cnt.fillRect(index * sizeOfBlock + sizeOfBlock * 0.025, 0, sizeOfBlock * 0.99, cnt.canvas.height * element);
         });
