@@ -15,7 +15,7 @@ class MSDRadixSort extends Sort {
     }
 
     step() {
-        if(this.currentDigit+1===20){
+        if (this.currentDigit + 1 === 20) {
             return true;
         }
         if (this.index >= this.workingPart.b) {
@@ -28,8 +28,6 @@ class MSDRadixSort extends Sort {
             this.index = this.position;
         }
         if (this.digit > 9 || this.position >= this.workingPart.b) {
-            // this.currentPart.b=this.position-1;
-            // this.layers[this.currentDigit].push(this.currentPart);
             this.digit = 0;
             while (this.layers[this.currentDigit].length === 0) {
                 if (this.layers[++this.currentDigit] === undefined) {
@@ -57,8 +55,40 @@ class MSDRadixSort extends Sort {
             cnt.fillStyle = getColorBasedOnValue(element);
             cnt.fillRect(index * sizeOfBlock + sizeOfBlock * 0.025, 0, sizeOfBlock * 0.99, cnt.canvas.height * element);
         });
-        cnt.fillStyle = "#f00";
         if (this.workingPart) {
+            let digitBefore = Math.floor(arrayToSort[this.currentPart.a] * Math.pow(10, this.currentDigit - 2));
+            digitBefore /= Math.pow(10, this.currentDigit - 2);
+            let currentDigit = (1 / Math.pow(10, this.currentDigit - 1));
+
+            cnt.fillStyle = "#f00";
+            cnt.fillRect(
+                0,
+                cnt.canvas.height * (currentDigit * this.digit + digitBefore),
+                cnt.canvas.width,
+                1
+            );
+            cnt.fillRect(
+                0,
+                cnt.canvas.height * (currentDigit * (this.digit + 1) + digitBefore),
+                cnt.canvas.width,
+                1
+            );
+
+            cnt.fillStyle = "#0F0";
+            cnt.fillRect(
+                0,
+                cnt.canvas.height * digitBefore,
+                cnt.canvas.width,
+                1
+            );
+            cnt.fillRect(
+                0,
+                cnt.canvas.height * (digitBefore + 1 / Math.pow(10, this.currentDigit - 2)),
+                cnt.canvas.width,
+                1
+            );
+
+            cnt.fillStyle = "#AFA";
             cnt.fillRect(this.workingPart.a * sizeOfBlock, 0, 1, cnt.canvas.height);
             cnt.fillRect((this.workingPart.b) * sizeOfBlock - 1, 0, 1, cnt.canvas.height);
         }
