@@ -50,6 +50,7 @@ class MSDRadixSort extends Sort {
     draw(cnt) {
         cnt.fillStyle = "#000";
         cnt.fillRect(0, 0, cnt.canvas.width, cnt.canvas.height);
+        const lineWidth = 2;
         const sizeOfBlock = cnt.canvas.width / arrayToSort.length;
         arrayToSort.forEach((element, index) => {
             cnt.fillStyle = getColorBasedOnValue(element);
@@ -65,32 +66,36 @@ class MSDRadixSort extends Sort {
                 0,
                 cnt.canvas.height * (currentDigit * this.digit + digitBefore),
                 cnt.canvas.width,
-                1
+                lineWidth
             );
             cnt.fillRect(
                 0,
                 cnt.canvas.height * (currentDigit * (this.digit + 1) + digitBefore),
                 cnt.canvas.width,
-                1
+                lineWidth
             );
 
-            cnt.fillStyle = "#0F0";
+            cnt.fillStyle = "#0e830e";
             cnt.fillRect(
                 0,
                 cnt.canvas.height * digitBefore,
                 cnt.canvas.width,
-                1
+                lineWidth
             );
             cnt.fillRect(
                 0,
                 cnt.canvas.height * (digitBefore + 1 / Math.pow(10, this.currentDigit - 2)),
                 cnt.canvas.width,
-                1
+                lineWidth
             );
 
-            cnt.fillStyle = "#AFA";
-            cnt.fillRect(this.workingPart.a * sizeOfBlock, 0, 1, cnt.canvas.height);
-            cnt.fillRect((this.workingPart.b) * sizeOfBlock - 1, 0, 1, cnt.canvas.height);
+            cnt.fillStyle = "#a2460a";
+            cnt.fillRect(this.index * sizeOfBlock, 0, lineWidth, cnt.canvas.height);
+            cnt.fillRect(this.position * sizeOfBlock, 0, lineWidth, cnt.canvas.height);
+
+            cnt.fillStyle = "#3b6ece";
+            cnt.fillRect(this.workingPart.a * sizeOfBlock, 0, lineWidth, cnt.canvas.height);
+            cnt.fillRect((this.workingPart.b) * sizeOfBlock - 1, 0, lineWidth, cnt.canvas.height);
         }
     }
 }
