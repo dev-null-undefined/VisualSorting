@@ -1,7 +1,7 @@
 # VisualSorting
 
 Sorting algorithms animated using JavaScript.
-You can test it out [here](https://dev-null-undefined.github.io/)
+You can test it out [here](https://dev-null.me/)
 
 ## Available algorithms
 
