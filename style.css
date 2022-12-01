@@ -73,7 +73,7 @@ canvas {
 .sliderContainer {
   display: inline-block;
   width: 49%;
-  height: 60%;
+  height: 50%;
   margin-top: -5px;
 }
 
@@ -110,6 +110,30 @@ canvas {
 
 .sliderContainer .textInput input:focus {
   outline: none;
+}
+
+.generator {
+  margin-bottom: 5px;
+}
+
+.generator .generatorFunction {
+  display: inline-block;
+  font-family: Arial, serif;
+  color: white;
+}
+
+.generator .generatorFunction label {
+  width: auto;
+  text-align: right;
+  margin-left: 10px;
+  float: left;
+}
+
+.generator .generatorFunction input {
+  width: fit-content;
+  text-align: left;
+  background: transparent;
+  border: none;
 }
 
 .slider {
@@ -210,6 +234,17 @@ button:focus {
   display: none;
 }
 
+.custom-select:after {
+  content: "▼";
+  font-size: 1.5rem;
+  color: white;
+  pointer-events: none;
+  position: absolute;
+  right: 0.2rem;
+  top: 0.2rem;
+  z-index: 1;
+}
+
 .select-selected {
   background-color: DodgerBlue;
 }
@@ -259,8 +294,9 @@ button:focus {
     width: 70%;
     grid-template-areas: "left midle right" "left midle right";
     grid-template-columns: 20% 60% 20%;
-    height: 100px;
+    height: 120px;
     margin-bottom: 30px;
+    margin-top: 30px;
   }
   footer {
     padding-bottom: 10px;

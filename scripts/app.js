@@ -9,10 +9,15 @@ let arrayToSortModifications = 0;
 
 const speedSlider = document.getElementById("speed");
 const sizeSlider = document.getElementById("arraySize");
-const generateButton = document.getElementById("generator");
+const generateButton = document.getElementById("resetButton");
 const startButton = document.getElementById("startButton");
 const sizeSliderText = document.getElementById("arraySizeText");
 const speedSliderText = document.getElementById("speedText");
+const generatorText = document.getElementById("generatorFunction");
+
+
+let generatorFunction = new Function("x", "return x");
+
 
 const canvas = document.getElementById("canvas");
 let width = window.innerWidth * 0.8;
@@ -87,11 +92,26 @@ const cnt = canvas.getContext("2d");
 cnt.font = "30px Arial";
 
 function generateArrayAndDraw() {
-    arrayToSort = generateArray(sizeSlider.value);
+    arrayToSort = generateArray(sizeSlider.value, generatorFunction);
     if (sortIndex) {
         updateSortMethod(sortIndex);
     }
     draw();
+}
+
+function generatorFunctionChanged() {
+    try {
+        const newGeneratorFunction = new Function("x", "i", "length", "l", "r", "rand", "return "+generatorText.value);
+        let value = newGeneratorFunction(1);
+        if (typeof value === "number") {
+            generatorFunction = newGeneratorFunction;
+            if (sortingTimeout === null) {
+                generateArrayAndDraw();
+            }
+        }
+    } catch (e) {
+        console.error(e);
+    }
 }
 
 // #region Adding event Listener
@@ -103,6 +123,7 @@ speedSlider.oninput = speedSliderOnChange;
 sizeSlider.oninput = sizeSliderOnChange;
 speedSliderText.onchange = speedSliderTextOnChange;
 sizeSliderText.onchange = sizeSliderTextOnChange;
+generatorText.onchange = generatorFunctionChanged;
 
 function sizeSliderOnChange() {
     generateArrayAndDraw();
@@ -147,9 +168,9 @@ function windowsResize() {
 
 function switchSorting() {
     if (sortMethod) {
-        if (sortingTimeout) {
+        if (sortingTimeout != null) {
             // Stop
-            clearTimeout(sortingTimeout);
+            if (sortingTimeout > 0) clearTimeout(sortingTimeout);
             sortingTimeout = null;
             oscillator.stop();
             startButton.innerText = "Start sorting";
@@ -158,6 +179,7 @@ function switchSorting() {
             sizeSlider.disabled = false;
             sizeSliderText.disabled = false;
         } else {
+            sortingTimeout = -1;
             isDoneSorting = false;
             if (sortMethod.constructor.sound()) {
                 oscillator.resume();

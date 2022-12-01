@@ -18,7 +18,7 @@
 <body>
 <header class="grid">
     <div class="left">
-        <button id="generator" class="generator">Restart</button>
+        <button id="resetButton" class="generator">Restart</button>
     </div>
     <div class="middle">
         <div class="sliderContainer">
@@ -33,6 +33,12 @@
             <div class="textInput">
                 <label for="speedText">Speed: </label>
                 <input id="speedText" type="text" value="10"/>
+            </div>
+        </div>
+        <div id="generator" class="generator">
+            <div class="generatorFunction">
+                <label for="generatorFunction">Generator: </label>
+                <input id="generatorFunction" type="text" value="Math.random()" class="generatorFunction">
             </div>
         </div>
         <div id="sortMethods" class="custom-select">

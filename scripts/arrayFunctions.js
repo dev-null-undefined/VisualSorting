@@ -34,12 +34,18 @@ function move(indexA, indexB, array) {
     return array.splice(indexB, 0, array.splice(indexA, 1)[0]);
 }
 
-function generateArray(length) {
-    const array = [];
+function generateArray(length, generatorFunction) {
+    let array = [];
+    let min = Infinity, max = -Infinity;
     for (let i = 0; i < length; i++) {
-        array.push(Math.random());
+        let randomNumber = Math.random();
+        array[i] = generatorFunction(i ,i , length, length, randomNumber, randomNumber);
+        if (array[i] < min) min = array[i];
+        if (array[i] > max) max = array[i];
     }
-    return array;
+    return array.map(value =>
+         map_range(value, min, max, 0, 1)
+    );
 }
 
 function minIndex(array) {
