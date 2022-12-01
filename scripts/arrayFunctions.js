@@ -8,7 +8,7 @@ function randomizePositions(array, timesToSwap = array.length) {
 }
 
 function isSorted(array) {
-    const sortedArray = [...array].sort();
+    const sortedArray = [...array].sort((a,b)=>a>b);
     let sorted = true;
     array.forEach((element, index) => {
         if (element !== sortedArray[index]) {
@@ -44,7 +44,7 @@ function generateArray(length, generatorFunction) {
         if (array[i] > max) max = array[i];
     }
     return array.map(value =>
-         map_range(value, min, max, 0, 1)
+         map_range(value, min, max, Number.EPSILON, 1 - Number.EPSILON)
     );
 }
 
@@ -96,10 +96,10 @@ function rgbToHex(r, g, b) {
 }
 
 function getDigit(number, position) {
-    if (number.toString().length <= position) {
+    if (number.toFixed(100).toString().length <= position) {
         return 0;
     } else {
-        return number.toString()[position];
+        return number.toFixed(100).toString()[position];
     }
 }
 
