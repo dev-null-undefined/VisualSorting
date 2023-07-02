@@ -8,7 +8,7 @@ function randomizePositions(array, timesToSwap = array.length) {
 }
 
 function isSorted(array) {
-    const sortedArray = [...array].sort((a,b)=>a>b);
+    const sortedArray = [...array].sort((a,b)=>a-b);
     let sorted = true;
     array.forEach((element, index) => {
         if (element !== sortedArray[index]) {

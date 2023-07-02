@@ -15,7 +15,7 @@ class SortChecking extends Sort {
         cnt.fillStyle = "#000";
         cnt.fillRect(0, 0, cnt.canvas.width, cnt.canvas.height);
         const sizeOfBlock = cnt.canvas.width / arrayToSort.length;
-        const sortedArray = [...arrayToSort].sort((a,b)=>a>b);
+        const sortedArray = [...arrayToSort].sort((a,b)=>a-b);
         arrayToSort.forEach((element, index) => {
             if (this.checkIndex === arrayToSort.length - 1) {
                 cnt.fillStyle = getColorBasedOnValue(element);
